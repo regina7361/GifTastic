@@ -1,4 +1,4 @@
-# Giphy Gals
+# GifTastic
 Giphy Gals is a page that calls the giphy api to display fun giphy images of reality stars.
 
 By default, the images will be still and upon click the images will be animated.

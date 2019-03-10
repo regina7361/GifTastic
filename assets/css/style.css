@@ -1,5 +1,16 @@
 body {
     background-color: gainsboro;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+.jumbotron {
+    background-color: turquoise;
+    color: black;
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+}
+.display-4 {
+    font-weight: bold;
 }
 button {
     background-color: black;

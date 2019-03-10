@@ -27,7 +27,12 @@
           var personImage = $("<img>");
           // Giving the image tag an src attribute of a proprty pulled off the
           // result item
-          personImage.attr("src", topics[i].images.fixed_height.url);
+          personImage.attr("src", topics[i].images.fixed_height_still.url);
+          personImage.attr("data-still", topics[i].images.fixed_height_still.url);
+          personImage.attr("data-animate", topics[i].images.fixed_height.url);
+          personImage.attr("data-state", "still");
+          personImage.attr("class", "gif");
+          
           // Appending the paragraph and personImage we created to the "gifDiv" div we created
           gifDiv.append(p);
           gifDiv.append(personImage);
@@ -72,10 +77,12 @@ $("#findRealityStar").on("click", function(event) {
               var personImage = $("<img>");
               // Giving the image tag an src attribute of a proprty pulled off the
               // result item
-              //personImage.attr("src", topics[i].images.fixed_height_still.url);
-              personImage.attr("src", topics[i].images.fixed_height.url);
-     
-            //   personImage.attr("state", "still")
+              personImage.attr("src", topics[i].images.fixed_height_still.url);
+              personImage.attr("data-still", topics[i].images.fixed_height_still.url);
+              personImage.attr("data-animate", topics[i].images.fixed_height.url);
+              personImage.attr("data-state", "still");
+              personImage.attr("class", "gif");
+
               // Appending the paragraph and personImage we created to the "gifDiv" div we created
               gifDiv.append(p);
               gifDiv.append(personImage);
@@ -91,25 +98,24 @@ $("#findRealityStar").on("click", function(event) {
         });
   });
 
+  //function to change the state of the image upon click
+
+  function changeState(){
+    var state = $(this).attr("data-state");
+    var animateImage = $(this).attr("data-animate");
+    var stillImage = $(this).attr("data-still");
+
+    if (state == "still") {
+      $(this).attr("src", animateImage);
+      $(this).attr("data-state", "animate");
+    }
+
+    else if (state == "animate") {
+      $(this).attr("src", stillImage);
+      $(this).attr("data-state", "still");
+    }
+  }
+
+  $(document).on("click", ".gif", changeState);
 
 
-// // Function for when animating gif and stop moving gif
-// $(personImage).on('click', function () {
-//     event.preventDefault();
-//     var state = $(this).attr('data-state');
-
-//     // Make gif either animated or still depending on 'data-state' value
-//     if (state === 'still') {
-//         $(this).attr('src', $(this).attr('data-animate'));
-//         $(this).attr('data-state', 'animate');
-//     } else {
-//         $(this).attr('src', $(this).attr('data-still'));
-//         $(this).attr('data-state', 'still');
-//     }
-
-  
-//       if (state == "still") {
-//         $("<img>").attr("state", "animated");
-//       } else {
-//         $("<img>").attr("state", "still");
-//     }
